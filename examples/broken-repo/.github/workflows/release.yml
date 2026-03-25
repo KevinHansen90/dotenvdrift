@@ -1,0 +1,11 @@
+name: release
+on: push
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    env:
+      RELEASE_REGION: us-east-1
+    steps:
+      - uses: actions/checkout@v4
+      - run: echo "publishing"
+      - run: echo ${{ secrets.PYPI_TOKEN }}
