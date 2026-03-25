@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="docs/assets/dotenvdrift-logo.png" alt="dotenvdrift logo" width="720">
+  <img src="https://raw.githubusercontent.com/KevinHansen90/dotenvdrift/main/docs/assets/dotenvdrift-logo.png" alt="dotenvdrift logo" width="720">
 </p>
 
 <h1 align="center">dotenvdrift</h1>

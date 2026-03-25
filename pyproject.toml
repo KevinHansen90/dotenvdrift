@@ -26,6 +26,11 @@ classifiers = [
 [project.scripts]
 dotenvdrift = "dotenvdrift.cli:main"
 
+[project.urls]
+Homepage = "https://github.com/KevinHansen90/dotenvdrift"
+Repository = "https://github.com/KevinHansen90/dotenvdrift"
+Issues = "https://github.com/KevinHansen90/dotenvdrift/issues"
+
 [tool.setuptools]
 package-dir = {"" = "src"}
 
