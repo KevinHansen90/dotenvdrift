@@ -13,9 +13,7 @@
   </a>
 </p>
 
-<p align="center">
-  Small repo-local CLI that catches env drift between code, <code>.env.example</code>, Docker / docker-compose, and GitHub Actions.
-</p>
+Small repo-local CLI that catches env drift between code, `.env.example`, Docker / docker-compose, and GitHub Actions.
 
 ## Why
 
