@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "dotenvdrift"
-version = "0.1.1"
+version = "0.1.2"
 description = "Repo-local CLI for env drift across code, .env.example, Docker, and GitHub Actions."
 readme = "README.md"
 requires-python = ">=3.11"
