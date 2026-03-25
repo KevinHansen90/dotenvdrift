@@ -5,6 +5,9 @@
 <h1 align="center">dotenvdrift</h1>
 
 <p align="center">
+  <a href="https://pypi.org/project/dotenvdrift/">
+    <img src="https://img.shields.io/pypi/v/dotenvdrift" alt="PyPI version">
+  </a>
   <a href="https://www.python.org/downloads/">
     <img src="https://img.shields.io/badge/python-3.11%2B-3776AB?logo=python&logoColor=white" alt="Python 3.11+">
   </a>
