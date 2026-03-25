@@ -18,19 +18,25 @@
 
 Small repo-local CLI that catches env drift between code, `.env.example`, Docker / docker-compose, and GitHub Actions.
 
-## Why
+## Why this exists
 
-I built this after repeatedly hitting env drift while moving quickly, including with coding agents: the code was done, but `.env.example`, Docker, docker-compose, and GitHub Actions had drifted apart.
+I kept hitting the same issue while working fast, especially with coding agents: the code worked, but the repo did not. `.env.example` drifted, CI expected different variables, Docker had its own set, and onboarding broke.
 
-That failure mode is not specific to AI-assisted repos. It breaks onboarding, local runs, and CI in any repo. This tool is just especially handy in fast-moving codebases where config drift shows up early.
+This tool catches that drift early. It is useful in any repo, and especially handy in fast-moving AI-assisted repos where config drift shows up early.
 
-## What It Checks
+## What it checks
 
-- `missing`: used in code but absent from `.env.example`
-- `undocumented`: referenced in Docker or GitHub Actions but not documented locally
-- `unused`: still listed in `.env.example` but no longer referenced
+- env vars used in code but missing from `.env.example`
+- vars referenced in Docker or GitHub Actions but undocumented locally
+- stale keys left behind in `.env.example`
 
 It scans Python and JS/TS code, `.env.example`, Docker / docker-compose files, and GitHub Actions workflows with simple deterministic patterns.
+
+## Agent usage
+
+This repository includes `AGENTS.md` and Copilot instructions for use with coding agents.
+
+The project is intentionally small, deterministic, and easy to audit.
 
 ## Install
 
@@ -75,12 +81,14 @@ unused
 ✗ 7 drift issues
 ```
 
-## Limits
+## Limitations
 
 - It never loads or prints env values, only names and locations.
-- It uses line-based regex scans, not ASTs or YAML parsers.
+- It is heuristic-based, using regex and line-based scanning instead of full parsing.
+- It may miss dynamically constructed env names.
+- It does not validate values or types.
 - It stays generic. AWS, GCP, Azure, and crypto repos work when they use env vars, but there is no provider-specific logic.
-- It does not sync secrets, manage vaults, validate schemas, or auto-fix anything.
+- It does not sync secrets, manage vaults, or auto-fix anything.
 
 ## Development
 

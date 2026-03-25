@@ -1,36 +1,21 @@
 # AGENTS.md
 
-Canonical repo instructions for coding agents.
+## Purpose
 
-## Setup commands
+Detect env var drift across code, `.env.example`, Docker / docker-compose, and GitHub Actions.
 
-- Python: `3.11+`
-- Sync the repo env: `uv sync`
-- Run tests: `uv run python -m unittest discover -s tests -p 'test_*.py' -v`
-- Run the example: `uv run dotenvdrift examples/broken-repo`
-- Build packages: `uv build`
+## Run
 
-## Project shape
+`uv run dotenvdrift .`
 
-- Keep runtime code in `src/dotenvdrift/`
-- Keep core logic in `core.py`
-- Keep CLI glue in `cli.py`
-- Keep the package stdlib-only unless a dependency removes a lot of code
+## Test
 
-## Guardrails
+`uv run python -m unittest discover -s tests -p 'test_*.py' -v`
 
-- Never print env values, only names and locations
-- Keep detection generic and deterministic
-- Do not add AWS / GCP / Azure / crypto-specific logic in v1
-- Prefer simple regex and line-based scanning over AST or YAML parsers
-- Do not add auto-fix behavior in this repo
-- Do not add a config file unless there is a concrete user need
-- Keep output short enough to read in one terminal screen
+## Principles
 
-## Style
-
-- Small functions
-- Direct names
-- Minimal comments
-- No framework layers
-- No speculative abstractions
+- keep code small and deterministic
+- keep detection generic
+- no dependencies unless necessary
+- prefer deletion over addition
+- never print env values, only names and locations
