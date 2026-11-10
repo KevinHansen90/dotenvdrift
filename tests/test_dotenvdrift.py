@@ -113,6 +113,17 @@ class AuditTests(unittest.TestCase):
             self.assertEqual([issue.name for issue in result.missing], ["LIVE_KEY"])
             self.assertEqual(result.unused, [])
 
+    def test_only_filter_empty_group_names_group_in_clean_message(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            write(root, ".env.example", "STALE_KEY=1\n")
+
+            code, stdout, _ = self.run_cli([str(root), "--only", "missing"])
+
+            self.assertEqual(code, 0)
+            self.assertIn("no missing drift", stdout)
+            self.assertNotIn("no env drift", stdout)
+
     def test_compose_environment_list_entries_are_scanned(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
