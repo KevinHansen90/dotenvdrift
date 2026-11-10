@@ -58,6 +58,8 @@ def render_text(result: AuditResult, only: str | None) -> str:
     groups = select_issues(result, only)
     total = sum(len(items) for _, items in groups)
     if total == 0:
+        if only is not None:
+            return f"✓ no {only} drift found"
         return "✓ no env drift found"
 
     lines: list[str] = []
